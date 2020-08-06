@@ -1,6 +1,6 @@
 # Pokemon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5. Clone this folder and run `npm install`. 
 
 ## Development server
 
