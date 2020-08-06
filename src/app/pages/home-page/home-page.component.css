@@ -1,0 +1,13 @@
+.products li{
+        
+    box-sizing: border-box;
+}
+.products li a{
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+    float: left;
+    width: 100%;
+}

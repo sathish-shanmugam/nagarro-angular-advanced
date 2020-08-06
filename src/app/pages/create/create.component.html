@@ -1,0 +1,101 @@
+<div class="container p-3">
+    <div class="row">
+      
+      <div class="col-12" *ngIf="productSaved">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Product</strong> saved successfully.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12" *ngIf="productList.length >= 5">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Could not add more than <strong>5</strong> product at a time.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <form [formGroup]="form" (submit)="submit()">
+          <div class="card">
+            <div class="card-body" formArrayName="products">
+              <div class="row">
+                <div class="col-12" *ngFor="let product of productFormGroup.controls; let i = index;">
+                    <div [formGroupName]="i" class="row">
+
+                        <div class="form-group col-4">
+                            <label>Name</label>
+                            <input class="form-control" formControlName="Name" type="text">
+                            <span class="text-danger" *ngIf="getProductsFormGroup(i).controls['Name'].touched && getProductsFormGroup(i).controls['Name'].errors != null">
+                                Value is required and min length 3! </span>
+                          </div>
+                        <div class="form-group col-4">
+                            <label>Description</label>
+                            <input class="form-control" formControlName="Description" type="text">
+                            <span class="text-danger" *ngIf="getProductsFormGroup(i).controls['Description'].touched && getProductsFormGroup(i).controls['Description'].errors != null">
+                                Value is required and min length 3! </span>
+                          </div>
+                        <div class="form-group col-4">
+                            <label>Price</label>
+                            <input class="form-control" formControlName="Price" type="text">              
+                            <span class="text-danger" *ngIf="getProductsFormGroup(i).controls['Price'].touched && getProductsFormGroup(i).controls['Price'].errors != null">
+                              Value is required and <i>Eg: 567.78</i>! </span>
+                            
+                          </div>
+                          
+                          <div class="form-group col-4">
+                            <label>Category</label>
+                            <select class="form-control" formControlName="Category" type="text">
+                                <option value="Electronics">Electronics</option>
+                                <option value="Cloths">Cloths</option>
+                                <option value="Blankets">Blankets</option>
+                            </select>
+                          </div>  
+                          
+                          <div class="form-group col-4">
+                            <label>Image URL</label>
+                            <input class="form-control" formControlName="ImageURL" type="text">
+                            <span class="text-danger" *ngIf="getProductsFormGroup(i).controls['ImageURL'].touched && getProductsFormGroup(i).controls['ImageURL'].errors != null">
+                                Value is required and valid URL! </span>
+                          </div>
+
+                          <div class="form-group col-2">
+                            <label>Phone Number</label>
+                            <input class="form-control" formControlName="PhoneNumber" type="text">
+                            <span class="text-danger" *ngIf="getProductsFormGroup(i).controls['PhoneNumber'].touched && getProductsFormGroup(i).controls['PhoneNumber'].errors != null">
+                              Value is required and max length 10! </span>
+                          </div>
+                          
+                          <div class="form-group col-2">
+                            <label>Select</label>
+                            <select class="form-control" formControlName="SelectType" type="text">
+                                <option value="Mobile">Mobile</option>
+                                <option value="Landline">Landline</option>
+                            </select>
+                          </div>
+
+                    
+  
+                    
+                    <div *ngIf="i>0" class="form-group col-12 text-right">
+                      <button class="btn btn-danger" type="button" (click)="removeProduct(i)"> Remove </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="col-12">
+                <button class="btn btn-success m-1 float-right" [disabled]="!form.valid" type="submit"> Save </button>
+                <button  class="btn btn-primary m-1 float-right" [disabled]="!form.valid || productList.length >= 5 " type="button" (click)="addProduct()"> Add Product </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

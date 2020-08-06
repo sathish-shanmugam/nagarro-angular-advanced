@@ -1,0 +1,13 @@
+<ol class="row products">
+    <li *ngFor="let product of products" class="col-md-3 text-center" >
+        <a *ngIf="product.customList" [routerLink]="['/detail']" [queryParams]="{id:product.customList.id}" >
+            <img src="{{product.customList.imageUrl}}"  class="img-fluid" />
+            <p>{{ product.name }}</p>
+        </a>
+      </li>
+  </ol>
+
+  <div class="col-12" *ngIf="products.length > 0">
+    <button class="btn btn-primary m-1 float-right" [disabled]="navigations['next'] == null"  type="button" (click)="navValue('next')"> Next </button>
+    <button class="btn btn-primary m-1 float-right" [disabled]="navigations['prev'] == null" type="button" (click)="navValue('prev')"> Previous </button>
+  </div>

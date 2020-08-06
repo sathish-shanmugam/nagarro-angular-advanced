@@ -1,0 +1,68 @@
+<div class="container">
+
+<div class="row" *ngIf="productDetail">
+    <h1 class="col-md-12 text-center mb-4 clr-1 bg-1 p-2">{{productDetail['name'] | uppercase}}</h1>
+    <div class="col-md-4 text-center">
+        <img class="img-fluid" src="{{productDetail['sprites']['other']['dream_world']['front_default']}}" alt="Product Image" />
+    </div>
+    <div class="col-md-3">
+        <h4 *ngIf="productDetail['types'][0]" style="background-color: green; color: #fff;" class="text-center">{{productDetail['types'][0]['type']['name'] | uppercase}}</h4>
+        <div *ngFor="let stat of productDetail['stats']">
+            <h5 class="statNormal">{{stat.stat.name}}</h5>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4 *ngIf="productDetail['types'][1]" style="background-color:purple; color: #fff;" class="text-center">{{productDetail['types'][1]['type']['name'] | uppercase}}</h4>
+        <div *ngFor="let stat of productDetail['stats']">
+            <h5 class="statBorder">{{stat.base_stat}}</h5>
+        </div>
+    </div>
+    <div class="col-md-2 text-center"><h2>#{{productDetail['id']}}</h2></div>
+
+
+    <div class="col-md-12 mb-4">
+        <h2 class="text-center mb-3 mt-5 clr-1 bg-1 p-1">Profile</h2>
+
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Height:</strong></div>
+            <div class="col-md-3">{{productDetail['height']}} m</div>
+            <div class="col-md-3"><strong>Weight:</strong></div>
+            <div class="col-md-3">{{productDetail['Weight']}} kg</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Species:</strong></div>
+            <div class="col-md-3">{{productDetail['species']['name']}} m</div>
+            <div class="col-md-3"><strong>Abilities:</strong></div>
+            <div class="col-md-3">
+                <span *ngFor="let abi of productDetail['abilities']; last as isLast"> <span>{{abi['ability']['name']}}<span *ngIf="!isLast">, </span></span></span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-12 mb-4">
+        <h2 class="text-center mb-3 mt-5 clr-1 bg-1 p-1">Evolutions</h2>
+
+        <div class="row mb-3">
+            <div class="col-md-3 text-center">
+                <img class="img-fluid" src="{{productDetail['sprites']['back_default']}}" />
+            </div>
+            <div class="col-md-3 text-center">
+                <img class="img-fluid" src="{{productDetail['sprites']['back_shiny']}}" />
+            </div> 
+            <div class="col-md-3 text-center">
+                <img class="img-fluid" src="{{productDetail['sprites']['front_default']}}" />
+            </div>
+            <div class="col-md-3 text-center">
+                <img class="img-fluid" src="{{productDetail['sprites']['front_shiny']}}" />
+            </div>           
+        </div>
+       
+
+
+    </div>
+
+
+</div>
+</div>

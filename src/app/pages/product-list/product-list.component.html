@@ -1,0 +1,10 @@
+<div class="container p-3">
+    <ol class="row">
+        <li *ngFor="let product of productList" class="col-md-3" >
+            <img alt="Product Image" title="{{product.Name}}" src="{{product.ImageURL}}" class="img-fluid" style="min-width: 100px;"  />
+            <p>{{ product.Name }}</p>
+        </li>
+    </ol>
+
+</div>
+

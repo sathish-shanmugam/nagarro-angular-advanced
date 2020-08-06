@@ -1,0 +1,15 @@
+.statBorder{
+    padding: 7px;
+    background-color: #fafafa;
+    margin: 5px 0;
+}
+.statNormal{
+    padding: 7px;
+    margin: 5px 0;
+}
+.bg-1{
+    background-color: darkgreen;
+}
+.clr-1{
+    color: white;
+}
